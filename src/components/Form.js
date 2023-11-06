@@ -26,7 +26,7 @@ const Form = () => {
   };
 
   return (
-    <div className="h-screen bg-slate-900 p-8">
+    <div className="h-screen border-r-[1px] p-8">
       <form onSubmit={handleSubmit} className=" p-4 bg-slate-500 rounded">
         <div className="flex flex-col">
           <label htmlFor="postal" className="text-white text-xl">
