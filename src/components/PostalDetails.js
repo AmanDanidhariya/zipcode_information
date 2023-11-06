@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Spinner from "./Spinner";
 import { useForm } from "../context/FormContext";
+import { usePostal } from "../context/postalDetailContext";
 
 const PostalDetails = () => {
   const { postalCode } = useForm();
-
-  const [postalData, setPostalData] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState("");
+  const {postalData ,setPostalData,isLoading,setIsLoading,isError,setIsError} = usePostal();
 
   useEffect(() => {
     //fetchData from API
@@ -19,7 +17,7 @@ const PostalDetails = () => {
           .then((response) => {
             //if response is not ok then throw error
             if (!response.ok) {
-              setIsError("Enter valid Postalcode.");
+              setIsError("Enter valid PostalCode.");
             }
             return response.json();
           })
