@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "../context/FormContext";
 
 const Form = () => {
   const { postalInput, setPostalInput, error, setError, handleFormSubmit } =
     useForm();
-  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -46,7 +45,6 @@ const Form = () => {
           <button
             type="submit"
             className="bg-green-400	px-4 py-2 rounded text-slate-900 uppercase text-sm font-semibold hover:bg-slate-700 hover:text-green-400"
-            disabled={isDisabled}
           >
             Get Data
           </button>

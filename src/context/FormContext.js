@@ -12,8 +12,6 @@ function FormProvider({ children }) {
     setPostalCode(value);
   };
 
-  console.log("postalCode", postalCode);
-
   return (
     <formContext.Provider
       value={{

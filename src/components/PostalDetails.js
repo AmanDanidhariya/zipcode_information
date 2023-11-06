@@ -1,35 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Spinner from "./Spinner";
 import { useForm } from "../context/FormContext";
 import { usePostal } from "../context/postalDetailContext";
 
 const PostalDetails = () => {
   const { postalCode } = useForm();
-  const {postalData ,setPostalData,isLoading,setIsLoading,isError,setIsError} = usePostal();
+  const { postalData, isLoading, isError, fetchPostalData } = usePostal();
 
+  //fetchPostal data as our input
   useEffect(() => {
-    //fetchData from API
-    const fetchData = () => {
-      if (postalCode) {
-        setIsLoading(true);
-        setIsError("");
-        fetch(`https://api.zippopotam.us/in/${postalCode}`)
-          .then((response) => {
-            //if response is not ok then throw error
-            if (!response.ok) {
-              setIsError("Enter valid PostalCode.");
-            }
-            return response.json();
-          })
-          .then((data) => {
-            //if we get data then update state with data
-            setPostalData(data);
-            setIsLoading(false);
-          });
-      }
-    };
-    fetchData();
-  }, [postalCode]);
+    fetchPostalData(postalCode);
+  }, [postalCode, fetchPostalData]);
 
   return (
     <div className="p-8">
@@ -92,6 +73,7 @@ const PostalDetails = () => {
             )}
           </ul>
         )}
+        <div></div>
       </div>
     </div>
   );
