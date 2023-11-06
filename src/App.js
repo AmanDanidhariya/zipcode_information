@@ -4,6 +4,8 @@ import Form from "./components/Form";
 import PostalDetails from "./components/PostalDetails";
 import { FormProvider } from "./context/FormContext";
 
+// className="flex items-center p-4 ml-[25%]"
+
 function App() {
   return (
     <FormProvider>
@@ -11,7 +13,7 @@ function App() {
         <div>
           <Form />
         </div>
-        <div className="flex items-center p-4 ml-[25%]">
+        <div>
           <PostalDetails />
         </div>
       </div>
